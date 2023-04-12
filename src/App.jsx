@@ -17,38 +17,36 @@ useEffect(()=>{
     return json
   }
 
-  const cambiarState = (e) =>{
-    (e.target.value)
-  }
-
-  console.log(buscar)
-
   return (
-  <div className='container'>
-      <div className='buscadorCont'>
-        <div className='buscador'>
+  <div className='container bug'>
+    <div className='tituloCont'>
+      <div className='titulo'>
+        <img src='/titulo.png'/>
+      </div>
+    </div>
+      <div className='buscadorCont bug'>
+        <div className='buscador bug'>
             <input
-            className='buscadorInput'
+            className='buscadorInput bug'
             placeholder='Buscar Pokemon'
-            onChange={cambiarState}
+            onChange={e => setBuscar(e.target.value)}
             defaultValue={buscar}/>
         </div>
-      </div>
-             
-      {pokemones.filter(pokemon => pokemon.name.toLowerCase()).map((pokemon,i) => {
+      </div>    
+      { pokemones.filter(pokemon => pokemon.name.toLowerCase().includes(buscar.toLowerCase())).map((pokemon,i) => {
         return (
-          <div className='cardCont'>
-            <div className='cardImagen'>
+          <div className='cardCont bug'>
+            <div className='cardImagen bug'>
               <img
               src={`https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/${pokemon.name}.png`}
               />
             </div>
               <button 
-              className='cardButton'
+              className='cardButton bug'
               key={i}
               type='submit'
               >
-                <h4 className='cardName'>{pokemon.name}</h4>
+                <h4 className='cardName bug'>{pokemon.name}</h4>
               </button>
           </div>
           ); 
