@@ -6,17 +6,17 @@ function App() {
   const [pokemones, setPokemones] = useState([]) 
   const [buscar,setBuscar] = useState('')
 
-useEffect(()=>{
+/* useEffect(()=>{
   fetchPokemon()
-  .then(pokemones => setPokemones(pokemones.results))
-},[])
+  .
+},[]) */
 
   const fetchPokemon = async () => {
     const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
     const json = await response.json()
+    .then(pokemones => setPokemones(pokemones.results))
     return json
   }
-
   return (
   <div className='container bug'>
     <div className='tituloCont'>
@@ -32,7 +32,8 @@ useEffect(()=>{
             onChange={e => setBuscar(e.target.value)}
             defaultValue={buscar}/>
         </div>
-      </div>    
+      </div>   
+      <button onClick={fetchPokemon}> consumir </button> <hr></hr>
       { pokemones.filter(pokemon => pokemon.name.toLowerCase().includes(buscar.toLowerCase())).map((pokemon,i) => {
         return (
           <div className='cardCont bug'>
@@ -48,6 +49,12 @@ useEffect(()=>{
               >
                 <h4 className='cardName bug'>{pokemon.name}</h4>
               </button>
+              
+              {/* <button 
+                className="cardButton bug"
+                onClick={ ()=>{setPokemones(pokemones.filter(caract => caract.id != pokemon .id));}}>
+                  Eliminar
+                </button> */}
           </div>
           ); 
         })}
