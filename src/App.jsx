@@ -33,7 +33,8 @@ function App() {
             defaultValue={buscar}/>
         </div>
       </div>   
-      <button onClick={fetchPokemon}> consumir </button> <hr></hr>
+      <button onClick={fetchPokemon} className='buttonConsumir'> consumir </button>
+      <div className='cardList'>
       { pokemones.filter(pokemon => pokemon.name.toLowerCase().includes(buscar.toLowerCase())).map((pokemon,i) => {
         return (
           <div className='cardCont bug'>
@@ -58,6 +59,7 @@ function App() {
           </div>
           ); 
         })}
+      </div>
   </div>
   )
 }
